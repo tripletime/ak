@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="Piotr Kosior" />
+		<meta name="description" content="Model FHP" />
+		<title>Piotr Kosior - Model FHP</title>
+		<link rel="stylesheet" href="css/myfhp.css" type="text/css" />
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<div id="gameContainer">
+				<header>
+					Model FHP
+				</header>
+				<canvas id="fhpModel">
+					Twoja przeglądarka nie wspiera HTML5.
+				</canvas>
+			</div>
+            
+            <p class="text"> Przesunięcie ściany </BR>
+                <input type="range" min="11" max="85" step="2" id="myRange" value="33" oninput="showWall(this.value); " onchange="showWall(this.value); "/>
+            </p>
+    
+            <p class="text"> Rozmiar szczeliny </BR>
+                <input type="range" min="3" max="43" step="2" id="myRangeS" value="5" oninput="showWallS(this.value); " onchange="showWallS(this.value); "/>
+            </p>
+
+			<p class="text"> Startowa gęstość lewej komory: 
+				<input type="text" size="4" id="probability" value="10" onchange="setProb(this.value)"/> %
+			</p>
+
+			<p class="text">
+				<button type="button" class="but" onclick="startGame();">START</button>
+				<button type="button" class="but" onclick="restartGame();">RESET</button>
+				<button type="button" class="but" onclick="pauseGame();">PAUZA</button>
+			</p>
+
+			<p class="text"> Procentowy rozkład cząsteczek w lewej komorze: </BR>
+				<input type="text" size="4" id="alive" value="100.00" disabled/> %
+                <meter id="aliveM" value="100" min="0" max="100"></meter>
+			</p>
+            <p class="text"> Procentowy rozkład cząsteczek w prawej komorze: </BR>
+				<input type="text" size="4" id="aliveright" value="0.00" disabled/> %
+                <meter id="aliverightM" value="0" min="0" max="100"></meter>
+			</p>
+
+		</div>
+		<script type="text/javascript" src="js/myfhp.js"></script>
+	</body>
+
+</html>
