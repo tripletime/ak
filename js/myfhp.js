@@ -172,7 +172,8 @@ function randomFillGame() {
 randomFillGame();
 
 function manualFillGame() {
-    arr[15][18] = 6;
+    arr[15][18] = 5;
+    arr[30][36] = 3;
 }
 
 /*
@@ -274,7 +275,7 @@ function makeArr() {
         for (var j = 0; j < newSizeY; j++) {
             if (j % 4 == 0 && i % 2 == 0) {
                 arr[i][j] = -1;
-                for (var k = 0; k < sizeZ; k++) {
+                for (var k = 1; k < sizeZ; k++) {
                     current_value = tab[i/2][j/2][k];
                     if (current_value >= 1 && current_value <= 6) {
                         arr[i][j] = current_value;
@@ -284,7 +285,7 @@ function makeArr() {
             }
             else if (j % 4 == 2 && i % 2 == 1) {
                 arr[i][j] = -1;
-                for (var k = 0; k < sizeZ; k++) {
+                for (var k = 1; k < sizeZ; k++) {
                     current_value = tab[(i-1)/2][j/2][k];
                     if (current_value >= 1 && current_value <= 6) {
                         arr[i][j] = current_value;
@@ -339,15 +340,6 @@ function firstStep() {
 firstStep();
 
 function step() {
-
-//	for (var i = 0; i < sizeX; i++) {
-//		for (var j = 0; j < sizeY; j++) {
-//			if (arr[i][j] == 1 && (countNeighbours(i, j) == 2 || countNeighbours(i, j) == 3) ) displayArr[i][j] = 1;
-//			else if (arr[i][j] == 0 && countNeighbours(i, j) == 3) displayArr[i][j] = 1;
-//			else displayArr[i][j] = 0;
-//		}
-//	}
-    
     // glowna funkcjonalnosc kroku wraz z kolizjami
     for (var i = 0; i < sizeX; i++) {
         for (var j = 0; j < sizeY; j++) {
@@ -355,60 +347,60 @@ function step() {
             if (i == 0 || j == 0 || i == sizeX - 1 || j == sizeY - 1) {
                 // lewa sciana
                 if (i == 0) {
-                    if (tab[i][j][6] == 6) {
-                        tab[i][j][6] = -1;
-                        tab[i][j][3] = 3;
+                    if (displayTab[i][j][6] == 6) {
+                        displayTab[i][j][6] = -1;
+                        displayTab[i][j][3] = 3;
                     }
                     // wiersze parzyste 0, 2 itd.
                     if (j % 2 == 0) {
-                        if (tab[i][j][1] == 1) {
-                            tab[i][j][1] = -1;
-                            tab[i][j][2] = 2;
+                        if (displayTab[i][j][1] == 1) {
+                            displayTab[i][j][1] = -1;
+                            displayTab[i][j][2] = 2;
                         }
-                        if (tab[i][j][5] == 5) {
-                            tab[i][j][5] = -1;
-                            tab[i][j][4] = 4;
+                        if (displayTab[i][j][5] == 5) {
+                            displayTab[i][j][5] = -1;
+                            displayTab[i][j][4] = 4;
                         }
                     }
                 }
                 // prawa sciana
                 else if (i == sizeX - 1) {
-                    if (tab[i][j][3] == 3) {
-                        tab[i][j][3] = -1;
-                        tab[i][j][6] = 6;
+                    if (displayTab[i][j][3] == 3) {
+                        displayTab[i][j][3] = -1;
+                        displayTab[i][j][6] = 6;
                     }
                     // wiersze nieparzyste 1, 3 itd.
                     if (j % 2 == 1) {
-                        if (tab[i][j][2] == 2) {
-                            tab[i][j][2] = -1;
-                            tab[i][j][1] = 1;
+                        if (displayTab[i][j][2] == 2) {
+                            displayTab[i][j][2] = -1;
+                            displayTab[i][j][1] = 1;
                         }
-                        if (tab[i][j][4] == 4) {
-                            tab[i][j][4] = -1;
-                            tab[i][j][5] = 5;
+                        if (displayTab[i][j][4] == 4) {
+                            displayTab[i][j][4] = -1;
+                            displayTab[i][j][5] = 5;
                         }
                     }
                 }
                 // gorna sciana
                 else if (j == 0) {
-                    if (tab[i][j][1] == 1) {
-                        tab[i][j][1] == -1;
-                        tab[i][j][5] == 5; 
+                    if (displayTab[i][j][1] == 1) {
+                        displayTab[i][j][1] == -1;
+                        displayTab[i][j][5] == 5; 
                     }
-                    if (tab[i][j][2] == 2) {
-                        tab[i][j][2] == -1;
-                        tab[i][j][4] == 4; 
+                    if (displayTab[i][j][2] == 2) {
+                        displayTab[i][j][2] == -1;
+                        displayTab[i][j][4] == 4; 
                     }
                 }
                 // dolna sciana
                 else if (j == sizeY - 1) {
-                    if (tab[i][j][5] == 5) {
-                        tab[i][j][5] == -1;
-                        tab[i][j][1] == 1; 
+                    if (displayTab[i][j][5] == 5) {
+                        displayTab[i][j][5] == -1;
+                        displayTab[i][j][1] == 1; 
                     }
-                    if (tab[i][j][4] == 4) {
-                        tab[i][j][4] == -1;
-                        tab[i][j][2] == 2; 
+                    if (displayTab[i][j][4] == 4) {
+                        displayTab[i][j][4] == -1;
+                        displayTab[i][j][2] == 2; 
                     }
                 }
             }
